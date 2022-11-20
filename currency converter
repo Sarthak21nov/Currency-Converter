@@ -1,0 +1,31 @@
+#in order to get the desired result download the Updated_Currency_Rate.txt file from the link given below.
+link:- https://drive.google.com/file/d/1DVRWVdJkWTnQoBi1cWhSYzYHTzp72NoN/view?usp=share_link
+print("************************ Welcome to Currency Converter ***********************")
+print("****************** Exchange Rates with respect to Botswana Pula *******************")
+with open("Updated_Currency_Rate.txt") as f:
+    lines=f.readlines()
+
+dict0={}
+dict1={}
+for line in lines:
+    p=line.split("\t")
+    dict0[p[0]]=p[1]
+    dict1[p[0]]=p[2]
+
+i=0
+for item in dict1.keys():
+    i=i+1
+    print(f"{i}.{item}")
+
+input_currency=input("Enter the name of the currency you use : \n")
+
+input_amount=float(input("Enter the amount you want to convert : \n"))
+b=input_amount *float(dict1[input_currency])
+
+i=0
+for item in dict0.keys():
+    i=i+1
+    print(f"{i}.{item}")
+
+conversion=input("Enter the name of the currency you want to convert this amount to? Available Options given above:")
+print(f"{input_amount} {input_currency} is equal to {b *float(dict0[conversion])} {conversion}.")
